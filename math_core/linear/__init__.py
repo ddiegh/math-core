@@ -3,3 +3,4 @@ from . import algoritm
 from . import vectores
 from . import descomposicion
 from . import solucion
+from . import gaussian
