@@ -1,7 +1,7 @@
 #en este archivo construimos algunas propiedades de los vectores (suma, multiplicacion escalar, norma, etc)
 #lo trate de documentar un poco para que no se me olvide como usar cada cosa 
 
-from math import sqrt
+from math_core.base.operaciones import raiz
 
 class Vector:
     def __init__(self, v:list[float]):
@@ -100,7 +100,7 @@ class Vector:
         >>> print(v.norma)
             3
         """
-        return sqrt(self.dot(self.v))
+        return raiz(self.dot(self.v))
     
     @property
     def normal(self):
