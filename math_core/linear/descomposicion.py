@@ -7,7 +7,6 @@ def qr(A:Matriz):
 
     Args: 
         A(Matriz): La matriz que queremos descomponer
-        norm(bool): true si queremos que la matriz Q sea ortonormal
     """
     Q = gram_schmidt(A)
     R = (Q.t)*A

@@ -73,7 +73,7 @@ class Vector:
         """
         return self.__mul__(c)
 
-    def dot(self, u: list[float]) -> int:
+    def dot(self, u: list[float]) -> float:
         """
         Realiza el producto punto de dos vectores.
 
@@ -81,7 +81,7 @@ class Vector:
             u (list): vector con el que queremos hacer producto punto
 
         Returns:
-            int: producto punto con u
+            float: producto punto con u
 
         Example:
             >>> v = Vector([1, 2])
