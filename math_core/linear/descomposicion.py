@@ -1,4 +1,4 @@
-from .matrices import Matriz
+from .matrix import Matriz
 from .algoritm import gram_schmidt
 
 def qr(A:Matriz):

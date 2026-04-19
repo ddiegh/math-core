@@ -1,8 +1,8 @@
 from math_core import linear as ln
 import math_core.linear.gaussian as gs
-from math_core.linear.matrices import Matriz
+from math_core.linear.matrix import Matriz
 
-A = ln.matrices.Matriz([[1,-1,4],
+A = ln.matrix.Matriz([[1,-1,4],
                         [1,4,-2],
                         [1,4,2],
                         [1,-1,0]])

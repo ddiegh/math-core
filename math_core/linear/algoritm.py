@@ -1,7 +1,7 @@
 #en este archivo algunos algoritmos que podemoa ocupar en matrices
 
-from .matrices import Matriz
-from .vectores import Vector
+from .matrix import Matriz
+from .vector import Vector
 
 def sol_triangular_sup(A:Matriz, b:Matriz):
     """

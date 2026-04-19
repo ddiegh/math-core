@@ -1,7 +1,7 @@
 #implementamos en metodo de gauss-jordan para escalonar una matriz
 
-from .matrices import Matriz
-from .vectores import Vector
+from .matrix import Matriz
+from .vector import Vector
 
 def triang_sup(A:Matriz):
     if A.columnas != A.renglones:
