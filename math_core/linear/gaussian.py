@@ -3,34 +3,68 @@
 from .matrix import Matriz
 from .vector import Vector
 
-def triang_sup(A:Matriz):
+
+def triang_sup(A: 'Matriz') -> 'Matriz':
+    """
+    Triangulariza una matriz cuadrada hacia su forma triangular superior
+    mediante eliminación gaussiana.
+
+    Args:
+        A (Matriz): matriz cuadrada a triangularizar.
+
+    Returns:
+        Matriz: matriz triangular superior equivalente a A.
+
+    Raises:
+        ValueError: si la matriz no es cuadrada.
+    """
     if A.columnas != A.renglones:
-        return "solo puedo con matrices cuadradas"
-    g = [renglones for renglones in A]
+        raise ValueError("Solo se aceptan matrices cuadradas.")
+
+    g = [renglon for renglon in A]
     n = A.columnas
-    #primero hacemos 1 en la diagonal
+
     for i in range(n):
         valor = g[i][i]
-        if valor == 0:
-            g[i] = g[i]
-        else:
-            g[i] = list(Vector(g[i])*(1/valor))
 
-        for k in range(i+1,n):
+        # Hacemos 1 en la diagonal (si el pivote no es 0)
+        if valor != 0:
+            g[i] = list(Vector(g[i]) * (1 / valor))
+
+        # Eliminamos los elementos debajo del pivote
+        for k in range(i + 1, n):
             factor = g[k][i]
-            renglon = list(Vector(g[k]) - factor*Vector(g[i]))
-            g[k]=renglon
+            g[k] = list(Vector(g[k]) - factor * Vector(g[i]))
+
     return Matriz(g)
 
-def triang_inf(A:Matriz):
-    At = A.t
-    return triang_sup(At).t
 
-def diag_gaussian(A:Matriz):
-    triangular = triang_sup(A)
-    diagonal = triang_inf(triangular)
+def triang_inf(A: 'Matriz') -> 'Matriz':
+    """
+    Triangulariza una matriz cuadrada hacia su forma triangular inferior
+    mediante eliminación gaussiana.
 
-    return diagonal 
+    Args:
+        A (Matriz): matriz cuadrada a triangularizar.
+
+    Returns:
+        Matriz: matriz triangular inferior equivalente a A.
+    """
+    return triang_sup(A.t).t
+
+
+def diag_gaussian(A: 'Matriz') -> 'Matriz':
+    """
+    Diagonaliza una matriz cuadrada mediante eliminación gaussiana completa
+    (triangulación superior e inferior).
+
+    Args:
+        A (Matriz): matriz cuadrada a diagonalizar.
+
+    Returns:
+        Matriz: matriz diagonal equivalente a A.
+    """
+    return triang_inf(triang_sup(A))
 
 
 

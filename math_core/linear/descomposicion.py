@@ -1,13 +1,17 @@
 from .matrix import Matriz
 from .algoritm import gram_schmidt
 
-def qr(A:Matriz):
+def qr(A: 'Matriz') -> tuple['Matriz', 'Matriz']:
     """
-    Descomposicion QR para una matriz, usando Gram-Schmit
+    Descomposición QR de una matriz usando Gram-Schmidt.
 
-    Args: 
-        A(Matriz): La matriz que queremos descomponer
+    Args:
+        A (Matriz): matriz a descomponer.
+
+    Returns:
+        tuple[Matriz, Matriz]: par (Q, R) donde Q es ortogonal y R es
+                               triangular superior, tal que A = Q * R.
     """
     Q = gram_schmidt(A)
-    R = (Q.t)*A
-    return Q,R
+    R = Q.t * A
+    return Q, R

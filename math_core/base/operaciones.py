@@ -61,3 +61,28 @@ class linspace(collections.abc.Sequence):
         return not self==other
     def __hash__(self):
         return hash((type(self), self.start, self.stop, self.num))  
+    
+
+
+def evaluar_pol(x: float, coefs: list[float]) -> float:
+    """
+    Evaluación de un polinomio en un punto x.
+
+    El polinomio se expresa como:
+        p(x) = coefs[0] + coefs[1]*x + coefs[2]*x² + ... + coefs[n]*xⁿ
+
+    Ejemplo:
+        Para y = 2x² - 3x + 5  →  coefs = [5, -3, 2]
+
+        evaluar_pol(3, [5, -3, 2])
+        >>> 5 + (-3)*3 + (2)*3² = 5 - 9 + 18 = 14
+
+    Args:
+        x     (float): valor donde se evalúa el polinomio.
+        coefs  (list): coeficientes ordenados de menor a mayor grado,
+                       es decir [término independiente, ..., coef. de xⁿ].
+
+    Returns:
+        float: valor del polinomio evaluado en x.
+    """
+    return sum(c * (x ** i) for i, c in enumerate(coefs))
