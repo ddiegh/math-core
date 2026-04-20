@@ -3,29 +3,6 @@
 from .matrix import Matriz
 from .vector import Vector
 
-def sol_triangular_sup(A:Matriz, b:Matriz):
-    """
-    Resuelve un sistema de ecuaciones definido por una matriz triangular superior
-    """
-    #vereficamos que si sea un sistema de ecuaciones bien definido
-    #la matriz es triangular superior entonces tiene que ser cuadrada
-    if (A.columnas != b.renglones) or (b.columnas!=1) or (A.columnas!=A.renglones):
-        raise ValueError("No podemos resolver el sistema")
-    
-    n,n = A.tamaño
-    #el sistema tiene el mismo numero de incognitas que la cantidad de elementos de b
-    #vamos a guardar los valores solucion en esta lista llena de ceros
-    valores = [0.0] * n  
-
-    for i in range(n):
-        #en cada igualdad, hacemos producto punto del renglon de la matriz con los valores que ya conocemos,
-        #los pasamos al otro lado con signo negativo y dividimos entre el coeficiente que tiene nuestra incognita 
-        #terminamos, agregando el valor (van de ultimo a primero)
-        valor = (b.matriz[n-i-1][0] - Vector(A.matriz[n-i-1]).dot(valores))/A.matriz[n-i-1][n-i-1]
-        valores[n-i-1] = valor
-    return Matriz(valores)
-
-
 
 def gram_schmidt(A:Matriz, norm:bool= True):
     """
@@ -57,23 +34,6 @@ def gram_schmidt(A:Matriz, norm:bool= True):
         matriz_ortogonal = A_ort
     #volvemos a trasponer para dejarla como al inicio (ahora ya ortogonal)
     return Matriz(matriz_ortogonal).t
-
-
-"""def eigenvalous(A:Matriz, n:int=100)->list[float]:
-    '''
-    Algoritmo para encontrar los valores propios de una matriz
-    Args:
-        A(Matriz): Matriz que queremos saber sus eigenvalores
-        n = cantidad de iteraciones
-    Returns:
-        eigenvalores(list): los valores propios de la matriz
-    '''
-    A_k = A
-    for _ in range(n):
-        Q,R = qr(A_k, True)
-        A_k = R*Q
-    val = [round(A_k.matriz[i][i]) for i in range(A.renglones)]
-    return val"""
 
 
 
