@@ -2,7 +2,7 @@
 # (suma, multiplicacion escalar, norma, etc)
 # Lo trate de documentar un poco para que no se me olvide como usar cada cosa
 
-from math_core.base.operaciones import raiz
+from math_core.base.operations import raiz
 
 
 class Vector:

@@ -1,4 +1,4 @@
-from math_core.base.operaciones import arange
+from math_core.base.operations import arange
 
 
 def euler_solve(
